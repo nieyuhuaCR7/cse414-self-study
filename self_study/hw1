@@ -1,0 +1,52 @@
+create a table Edges(Source, Destination) where both Source and Destination are integers
+
+CREATE TABLE Edges (
+  Source INT,
+  Destination INT
+);
+
+INSERT INTO Edges (Source, Destination) VALUES (10, 5);
+INSERT INTO Edges (Source, Destination) VALUES (6, 25);
+INSERT INTO Edges (Source, Destination) VALUES (1, 3);
+INSERT INTO Edges (Source, Destination) VALUES (4, 4);
+
+SELECT * FROM Edges;
+
+SELECT Source FROM Edges;
+
+SELECT * FROM Edges WHERE Source > Destination;
+
+INSERT INTO Edges (Source, Destination) VALUES ("-1", "2000");
+
+CREATE TABLE MyRestaurants 
+             (RestauranName varchar(100),
+             FoodType varchar(10),
+             DistanceMinutes INT,
+             LastVisitDate varchar(10),
+             Liked INT
+             );
+
+INSERT INTO MyRestaurants VALUES("yuhua restaurant", "shanxi food", 10, "2023-01-15", 1);
+INSERT INTO MyRestaurants VALUES("zongshi restaurant", "xian food", 20, "2022-01-15", 1);
+INSERT INTO MyRestaurants VALUES("zongshi restaurant", "xian food", 20, "2022-01-15", 0);
+INSERT INTO MyRestaurants VALUES("kg restaurant", "shanghai food", 20, "2022-07-24", 0);
+INSERT INTO MyRestaurants VALUES("qiuqiu restaurant", "tianjin food", 20, "2022-06-24", NULL);
+
+.mode csv
+.mode list
+.mode column
+
+
+SELECT RestauranName, DistanceMinutes
+FROM MyRestaurants
+WHERE DistanceMinutes < 30
+ORDER BY RestauranName;
+
+SELECT *
+FROM MyRestaurants
+WHERE Liked = 1 AND 
+      date('now', '-3 month') > date(LastVisitDate);
+
+SELECT *
+FROM MyRestaurants
+WHERE DistanceMinutes <= 10;
